@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% load static %}
+{% block head %}
+<link rel="stylesheet" href="{% static 'ex_1/css/style.css' %}">
+{% endblock head %}
+{% block title %}Home Page{% endblock title %}
+{% block content %}
+<div class="wrapper">
+  <table class="block">
+    {% csrf_token %}
+    <tr>
+      <th>Home</th>
+      <th>Price</th>
+    </tr>
+    {% for f in form %}
+    <tr>
+      <td>{{ f.label_tag }}</td>
+      <td>{{ f }}</td>
+      {% if f.errors %}
+        <td>{{ f.errors }}</td>
+      {% endif %}
+    </tr>
+    {% endfor %}
+  </table>
+</div>
+{% endblock content %}
