@@ -12,4 +12,9 @@ def index(request: HttpRequest):
         }
         
         return render(request, "ex_1/index.html", context)
+    if request.method == "POST":
+        form = FormAuthor(request.POST)
+        if form.is_valid():
+            form.save()
+            return HttpResponse("The author was created")
         

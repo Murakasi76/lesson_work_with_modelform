@@ -5,7 +5,7 @@
 {% endblock head %}
 {% block title %}Home Page{% endblock title %}
 {% block content %}
-<div class="wrapper">
+<form class="wrapper" method="POST">
   <table class="block">
     {% csrf_token %}
     <tr>
@@ -22,5 +22,6 @@
     </tr>
     {% endfor %}
   </table>
-</div>
+  <button type="submit">SUBMIT</button>
+</form>
 {% endblock content %}
