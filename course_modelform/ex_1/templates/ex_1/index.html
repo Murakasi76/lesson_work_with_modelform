@@ -1,27 +1,36 @@
-{% extends "base.html" %}
-{% load static %}
-{% block head %}
-<link rel="stylesheet" href="{% static 'ex_1/css/style.css' %}">
-{% endblock head %}
-{% block title %}Home Page{% endblock title %}
-{% block content %}
-<form class="wrapper" method="POST">
-  <table class="block">
+{% extends "base.html" %} {% load static %} {% block head %}
+<link rel="stylesheet" href="{% static 'ex_1/css/style.css' %}" />
+{% endblock head %} {% block title %}Home Page{% endblock title %} {% block content %}
+<form class="autho_book" method="POST">
+  <table class="author">
     {% csrf_token %}
+
     <tr>
-      <th>Home</th>
-      <th>Price</th>
+      <th colspan="2">Author</th>
     </tr>
-    {% for f in form %}
+    {% for f in author_form %}
     <tr>
       <td>{{ f.label_tag }}</td>
       <td>{{ f }}</td>
       {% if f.errors %}
-        <td>{{ f.errors }}</td>
+      <td>{{ f.errors }}</td>
       {% endif %}
     </tr>
     {% endfor %}
   </table>
+  <table class="book">
+    {% csrf_token %}
+    <tr>
+      <th colspan="3">Author</th>
+    </tr>
+    {% for book in book_form %}
+    <td>{{ book.label_tag }}</td>
+    <td>{{ book }}</td>
+    {% if book.errors %}
+    <td>{{ book.errors }}</td>
+    {% endif %} {% endfor %}
+  </table>
   <button type="submit">SUBMIT</button>
 </form>
+
 {% endblock content %}
